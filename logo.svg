@@ -1,11 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
   <title id="title">Shopora</title>
-  <desc id="desc">Shopora logo with blue and orange S mark</desc>
-  <rect width="600" height="180" rx="34" fill="#fff"/>
-  <rect x="4" y="4" width="592" height="172" rx="30" fill="none" stroke="#dce4ef" stroke-width="8"/>
-  <path d="M88 44c-30 0-49 13-49 34 0 24 22 30 48 36 15 3 23 6 23 12 0 7-8 11-21 11-16 0-28-5-39-15l-16 20c14 13 32 19 55 19 32 0 51-14 51-37 0-23-19-31-46-37-17-4-25-7-25-13 0-6 7-10 20-10 14 0 26 4 36 12l15-21C127 48 110 44 88 44z" fill="#0874b9"/>
-  <path d="M87 82c-12-3-18-6-18-11 0-6 7-10 20-10 8 0 16 2 23 5l14-20c-11-5-23-8-38-8-30 0-49 13-49 34 0 24 22 30 48 36z" fill="#f28b25" opacity=".96"/>
-  <path d="M176 53h28v48c0 24 10 36 31 36 20 0 30-12 30-36V53h28v49c0 40-20 59-58 59s-59-19-59-59z" fill="#102033"/>
-  <path d="M306 157V53h48c34 0 54 20 54 51s-20 53-54 53zm28-25h18c18 0 28-10 28-28 0-17-10-26-28-26h-18z" fill="#102033"/>
-  <path d="M424 157V53h28v104zM485 157V53h28v79h48v25z" fill="#102033"/>
+  <desc id="desc">Shopora shopping bag logo and the phrase Shop for smiles, support</desc>
+  <g transform="translate(30 42)">
+    <path d="M151 120V78c0-54 44-98 98-98s98 44 98 98v42h-48V78c0-28-22-50-50-50s-50 22-50 50v42z" fill="#07182f"/>
+    <path d="M70 116h358c22 0 40 18 42 40l17 220c4 55-39 101-94 101H105c-55 0-98-46-94-101l17-220c2-22 20-40 42-40z" fill="#07182f"/>
+    <path d="M113 184c39-36 95-38 145-38h82v55h-99c-47 0-68 13-68 31 0 21 30 25 76 34 62 12 98 34 98 90 0 65-58 105-145 105-56 0-103-17-135-48l38-48c28 25 60 36 101 36 37 0 63-11 63-35 0-19-22-26-71-36-66-13-110-35-110-92 0-22 9-39 25-54z" fill="#ff8200"/>
+    <path d="M18 373c65 59 152 82 250 82 84 0 145-19 194-63-11 39-45 73-89 86-101 30-263 5-355-105z" fill="#ff8200"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <text x="395" y="270" font-size="174" letter-spacing="-10" fill="#07182f">Shopor</text>
+    <text x="1013" y="270" font-size="174" letter-spacing="-10" fill="#ff8200">a</text>
+    <text x="405" y="375" font-size="39" letter-spacing="15" fill="#07182f">SHOP FOR SMILES,</text>
+    <text x="965" y="375" font-size="39" letter-spacing="15" fill="#ff8200">SUPPORT</text>
+  </g>
 </svg>
