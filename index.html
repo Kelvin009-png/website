@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopor — Global Commerce</title>
+  <meta name="description" content="Shopor is a global online shopping platform built for modern commerce and cross-border retail." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2312d8ef'/%3E%3Ccircle cx='32' cy='32' r='26' fill='white' opacity='.18'/%3E%3Cpath d='M22 43V20h12.3c6.3 0 10.4 3.6 10.4 8.9 0 5.7-4.3 9.1-10.9 9.1H27.1v5H22zm9.1-12.4h3.3c3 0 4.8-1.7 4.8-4.2 0-2.6-1.7-4.2-4.7-4.2h-3.4v8.4z' fill='%23f9b79d'/%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#12d8ef" />
+  <style>
+    :root{
+      --navy:#071426; --blue:#2563eb; --cyan:#12d8ef; --orange:#f9b79d; --ink:#102033;
+      --muted:#637287; --bg:#f7f9fc; --white:#fff; --line:#e5eaf1;
+      --shadow:0 18px 50px rgba(7,20,38,.10); --radius:24px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--white);line-height:1.6}
+    a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+    header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(229,234,241,.75)}
+    nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:inline-flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),#08bed4);display:grid;place-items:center;box-shadow:0 10px 20px rgba(18,216,239,.28);border:2px solid rgba(255,255,255,.8)}
+    .brand-mark span{font-size:22px;font-weight:900;line-height:1;color:var(--orange);transform:translateY(-1px);display:block}
+    .logo{font-size:26px;font-weight:900;letter-spacing:-.08em;display:inline-flex;align-items:center;gap:0;line-height:1}
+    .logo .main{color:var(--cyan)}
+    .logo .accent{color:var(--orange)}
+    .navlinks{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:700;color:#405067}
+    .navlinks a:hover{color:var(--blue)} .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;font-weight:800;border:1px solid var(--line);cursor:pointer}
+    .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)} .btn.dark{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .hero{padding:160px 0 90px;background:radial-gradient(circle at 75% 20%,#dff7ff 0,transparent 34%),linear-gradient(135deg,#f8fbff,#eef4ff)}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:55px;align-items:center}
+    .eyebrow{display:inline-flex;padding:7px 12px;border-radius:999px;background:#e9f1ff;color:#1d55c9;font-weight:800;font-size:12px;letter-spacing:.5px}
+    h1{font-size:clamp(48px,7vw,82px);line-height:.98;letter-spacing:-4px;margin:20px 0}
+    h1 em{font-style:normal;color:var(--blue)} .lead{font-size:20px;color:#59687b;max-width:650px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .hero-card{background:var(--navy);border-radius:32px;min-height:470px;padding:24px;color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero-card:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));right:-120px;top:-110px;opacity:.9}
+    .screen{position:absolute;left:28px;right:28px;bottom:28px;top:105px;background:#fff;border-radius:20px;padding:18px;color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .screen-top{display:flex;justify-content:space-between;font-weight:900}.mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .mock-product{height:145px;border-radius:16px;background:linear-gradient(145deg,#edf3ff,#dce9ff);padding:12px;display:flex;align-items:end;font-weight:800;font-size:13px}
+    section{padding:95px 0}.section-head{max-width:720px;margin-bottom:42px}.section-head h2{font-size:46px;line-height:1.05;letter-spacing:-2px;margin:10px 0}.section-head p{color:var(--muted);font-size:18px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat{padding:28px;border:1px solid var(--line);border-radius:20px;background:#fff}.stat strong{display:block;font-size:36px}.stat span{color:var(--muted)}
+    .dark-section{background:var(--navy);color:#fff}.dark-section .section-head p{color:#aebbd0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 10px 35px rgba(7,20,38,.04)}.dark-section .card{background:#0d1d33;border-color:#1d304c}
+    .icon{width:48px;height:48px;border-radius:14px;background:#eaf1ff;color:var(--blue);display:grid;place-items:center;font-weight:900;margin-bottom:18px}
+    .dark-section .icon{background:#17304f;color:#67e8f9}.card h3{margin:0 0 8px;font-size:20px}.card p{margin:0;color:var(--muted)}.dark-section .card p{color:#b2bfd1}
+    .gallery{display:grid;grid-template-columns:1.3fr .7fr;gap:18px}.photo{min-height:280px;border-radius:24px;padding:25px;display:flex;align-items:end;color:#fff;font-weight:900;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f172a,#2563eb)}
+    .photo:nth-child(2){background:linear-gradient(135deg,#083344,#06b6d4)}.photo:nth-child(3){background:linear-gradient(135deg,#312e81,#7c3aed)}.photo.large{grid-row:span 2;min-height:578px}
+    .photo small{display:block;font-weight:600;opacity:.8}.photo b{font-size:25px}
+    .markets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.market{border-radius:24px;padding:28px;background:var(--bg);border:1px solid var(--line)}.market .flag{font-size:34px}.market h3{font-size:23px}
+    .showcase{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.showcase-img{background:linear-gradient(135deg,#0b1730,#1d4ed8);padding:18px;border-radius:30px;box-shadow:var(--shadow)}.browser{background:#fff;border-radius:18px;overflow:hidden}.browser-bar{height:35px;background:#edf1f6;padding:8px 12px;font-size:10px;color:#738094}.browser-body{padding:18px}.browser-hero{height:160px;border-radius:14px;background:linear-gradient(110deg,#dbeafe,#cffafe);margin-bottom:15px}.browser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.browser-row div{height:95px;border-radius:12px;background:#f1f5f9}
+    .timeline{border-left:2px solid #dbe3ee;margin-left:15px;padding-left:30px}.timeline-item{margin-bottom:35px;position:relative}.timeline-item:before{content:"";position:absolute;left:-40px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px #eaf1ff}
+    .faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between}.faq-a{color:var(--muted);margin-top:8px}
+    .cta{padding:70px;border-radius:34px;background:linear-gradient(135deg,#0b1730,#155eef);color:#fff;text-align:center}.cta p{color:#d4e3ff;max-width:650px;margin:12px auto 25px}
+    footer{background:#06101f;color:#aebbd0;padding:60px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:900;margin-bottom:12px}.footer-links{display:grid;gap:8px;font-size:14px}.copyright{border-top:1px solid #1b2b43;margin-top:35px;padding-top:22px;font-size:13px}
+    @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero-card{min-height:400px}.photo.large{min-height:380px}}
+    @media(max-width:560px){section{padding:70px 0}.stats,.cards,.markets{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:125px}.cta{padding:40px 24px}}
+  </style>
+</head>
+<body>
+<header><div class="container"><nav>
+  <a class="brand" href="#home" aria-label="Shopor home">
+    <span class="brand-mark" aria-hidden="true"><span>r</span></span>
+    <span class="logo"><span class="main">SHOPO</span><span class="accent">R</span></span>
+  </a>
+  <div class="navlinks">
+    <a href="#about">About</a><a href="#global">Global</a><a href="#platform">Platform</a><a href="#partners">Partners</a><a href="#faq">FAQ</a>
+  </div>
+  <a class="btn primary" href="#contact">Contact</a>
+</nav></div></header>
+
+<main>
+<section class="hero" id="home"><div class="container hero-grid">
+  <div>
+    <span class="eyebrow">U.S.-ORIGINATED • GLOBAL COMMERCE</span>
+    <h1>Commerce without <em>borders.</em></h1>
+    <p class="lead">Shopor is a global e-commerce company designed to connect customers, retailers and brands through a modern digital shopping experience across international markets.</p>
+    <div class="actions"><a class="btn primary" href="#about">Discover Shopor</a><a class="btn" href="#platform">View Platform</a></div>
+  </div>
+  <div class="hero-card"><div style="position:relative;z-index:2;font-size:13px;font-weight:800;opacity:.8">SHOPOR GLOBAL COMMERCE</div>
+    <div class="screen"><div class="screen-top"><span>Shopor</span><span>Search • Account • Cart</span></div><div class="mock-grid">
+      <div class="mock-product">Electronics</div><div class="mock-product">Fashion</div><div class="mock-product">Home</div>
+      <div class="mock-product">Beauty</div><div class="mock-product">Sports</div><div class="mock-product">Everyday</div>
+    </div></div>
+  </div>
+</div></section>
+
+<section id="about"><div class="container">
+  <div class="section-head"><span class="eyebrow">ABOUT SHOPOR</span><h2>A global shopping platform built for modern customers.</h2><p>Shopor connects people with products and partners through a clean, scalable digital retail experience.</p></div>
+  <div class="stats"><div class="stat"><strong>01</strong><span>U.S. origin</span></div><div class="stat"><strong>Global</strong><span>International market vision</span></div><div class="stat"><strong>24/7</strong><span>Digital shopping experience</span></div><div class="stat"><strong>∞</strong><span>Room to scale</span></div></div>
+</div></section>
+
+<section class="dark-section" id="global"><div class="container">
+  <div class="section-head"><span class="eyebrow">GLOBAL OPERATIONS</span><h2>Designed for international commerce.</h2><p>Shopor serves customers and business partners across North America, Asia and Europe with a modern retail experience.</p></div>
+  <div class="markets">
+    <div class="market"><div class="flag">🇺🇸</div><h3>North America</h3><p>Corporate origin, technology, business development and international operations.</p></div>
+    <div class="market"><div class="flag">🌏</div><h3>Asia</h3><p>Growth-focused strategy across leading digital commerce markets and emerging online audiences.</p></div>
+    <div class="market"><div class="flag">🇪🇺</div><h3>Europe</h3><p>Cross-border shopping support and trusted retail partnerships across key regions.</p></div>
+  </div>
+</div></section>
+
+<section id="headquarters"><div class="container">
+  <div class="section-head"><span class="eyebrow">HEADQUARTERS</span><h2>Where Shopor operates from.</h2><p>Strong infrastructure, team culture and global operations create the foundation for modern commerce.</p></div>
+  <div class="gallery">
+    <div class="photo large"><div><small>GLOBAL OFFICE</small><b>Shopor Headquarters</b><br>New York, United States</div></div>
+    <div class="photo"><div><small>EXECUTIVE SPACE</small><b>Leadership Office</b></div></div>
+    <div class="photo"><div><small>TEAM HUB</small><b>Operations & Team</b></div></div>
+  </div>
+</div></section>
+
+<section id="platform" style="background:var(--bg)"><div class="container">
+  <div class="section-head"><span class="eyebrow">THE PLATFORM</span><h2>Show the real Shopor experience.</h2><p>A refined digital shopping journey built around customer discovery, comparison and purchase.</p></div>
+  <div class="showcase">
+    <div class="showcase-img"><div class="browser"><div class="browser-bar">shopor.example • Secure shopping experience</div><div class="browser-body"><div class="browser-hero"></div><div class="browser-row"><div></div><div></div><div></div></div></div></div></div>
+    <div>
+      <h3>From discovery to delivery</h3>
+      <div class="timeline">
+        <div class="timeline-item"><b>01 — Discover</b><div>Explore categories, products and curated collections.</div></div>
+        <div class="timeline-item"><b>02 — Compare</b><div>Review product information, options and pricing.</div></div>
+        <div class="timeline-item"><b>03 — Purchase</b><div>Complete checkout with fast, secure payment options.</div></div>
+        <div class="timeline-item"><b>04 — Track</b><div>Follow orders and receive responsive customer support.</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="partners"><div class="container">
+  <div class="section-head"><span class="eyebrow">BUSINESS PARTNERS</span><h2>Built to connect customers and commerce partners.</h2><p>Shopor helps retailers, brands and suppliers reach new audiences through a modern marketplace experience.</p></div>
+  <div class="cards">
+    <div class="card"><div class="icon">R</div><h3>Retailers</h3><p>Expand your digital reach and connect products with new customer audiences.</p></div>
+    <div class="card"><div class="icon">B</div><h3>Brands</h3><p>Showcase products through a modern international shopping environment.</p></div>
+    <div class="card"><div class="icon">S</div><h3>Suppliers</h3><p>Build product and supply relationships across Shopor’s marketplace ecosystem.</p></div>
+  </div>
+</div></section>
+
+<section class="dark-section" id="company"><div class="container">
+  <div class="section-head"><span class="eyebrow">COMPANY INFORMATION</span><h2>Transparent information builds trust.</h2><p>Use this area for verified corporate information, registration details, leadership, history, offices and official contact channels.</p></div>
+  <div class="cards">
+    <div class="card"><h3>Legal Entity</h3><p>Shopora, Inc.US<br>Official registered legal entity name.</p></div>
+    <div class="card"><h3>Headquarters</h3><p>Amazon.com, Inc.
+
+410 Terry Avenue North
+Seattle, Washington 98109-5210
+United States, New York, NY 10005, USA.</p></div>
+    <div class="card"><h3>Founded</h3><p>2026. A modern digital commerce brand built for global growth.</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="container"><div class="section-head"><span class="eyebrow">FAQ</span><h2>Frequently asked questions.</h2></div>
+<div class="faq">
+  <div class="faq-item"><div class="faq-q">What is Shopor? <span>+</span></div><div class="faq-a">Shopor is a global online shopping and marketplace platform connecting customers with products and business partners.</div></div>
+  <div class="faq-item"><div class="faq-q">Where is Shopor based? <span>+</span></div><div class="faq-a">Shopor is headquartered in the United States and operates globally.</div></div>
+  <div class="faq-item"><div class="faq-q">Which markets does Shopor serve? <span>+</span></div><div class="faq-a">Shopor is designed for international markets with a strategic focus on North America, Asia and Europe.</div></div>
+  <div class="faq-item"><div class="faq-q">Can businesses partner with Shopor? <span>+</span></div><div class="faq-a">Retailers, brands and suppliers can explore partnership programs and apply for collaboration opportunities.</div></div>
+</div></div></section>
+
+<section id="contact"><div class="container"><div class="cta">
+  <span class="eyebrow">CONTACT SHOPOR</span><h2>Let's build global commerce together.</h2><p>Use official customer support and business channels to connect with our team.</p>
+  <div class="actions" style="justify-content:center"><a class="btn" href="mailto:support@example.com">Customer Support</a><a class="btn" href="mailto:business@example.com">Business Partnerships</a></div>
+</div></div></section>
+</main>
+
+<footer><div class="container">
+  <div class="footer-grid">
+    <div><div class="brand" style="color:#fff"><span class="brand-mark" aria-hidden="true"><span>r</span></span><span class="logo"><span class="main">SHOPO</span><span class="accent">R</span></span></div><p>A modern international e-commerce brand built for global growth.</p></div>
+    <div><div class="footer-title">Company</div><div class="footer-links"><a href="#about">About</a><a href="#global">Global</a><a href="#headquarters">Headquarters</a></div></div>
+    <div><div class="footer-title">Business</div><div class="footer-links"><a href="#partners">Partners</a><a href="#platform">Platform</a><a href="#contact">Contact</a></div></div>
+    <div><div class="footer-title">Policies</div><div class="footer-links"><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a><a href="#">Refund Policy</a></div></div>
+  </div>
+  <div class="copyright">© 2026 Shopor. Global commerce platform.</div>
+</div></footer>
+</body>
+</html>
