@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Shopora</title>
+  <rect width="64" height="64" rx="14" fill="#fff"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="#dce4ef" stroke-width="3"/>
+  <path d="M32 13c-12 0-20 5-20 14 0 10 9 12 19 15 6 1 9 2 9 5 0 3-3 4-8 4-6 0-11-2-16-6l-6 8c6 5 13 7 22 7 13 0 20-6 20-15 0-9-8-12-18-15-7-2-10-3-10-5 0-3 3-4 8-4 6 0 10 2 15 5l6-8c-5-3-12-5-21-5z" fill="#0874b9"/>
+  <path d="M32 29c-5-1-8-2-8-5 0-3 3-4 8-4 3 0 6 1 9 2l6-8c-4-2-9-3-15-3-12 0-20 5-20 14 0 10 9 12 19 15z" fill="#f28b25"/>
+</svg>
