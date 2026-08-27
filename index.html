@@ -7,6 +7,7 @@
   <meta name="description" content="Shopora is a global online shopping platform built for modern commerce and cross-border retail." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="theme-color" content="#12d8ef" />
+  <script>document.documentElement.classList.add('js');</script>
   <style>
     :root{
       --navy:#071426; --blue:#2563eb; --cyan:#12d8ef; --orange:#f9b79d; --ink:#102033;
@@ -47,7 +48,8 @@
     .business-segments{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}.business-segment{padding:18px 20px;border:1px solid #1d304c;background:#0d1d33;color:#b2bfd1}.business-segment b{display:block;color:#fff;margin-bottom:5px}.business-segment p{margin:0;color:#b2bfd1;font-size:14px}.legal-section{padding:75px 0;background:var(--bg)}.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.legal-card{padding:24px;border:1px solid var(--line);background:#fff;box-shadow:0 10px 30px rgba(7,20,38,.05)}.legal-card h2{margin:0 0 6px;color:var(--navy);font-size:25px}.legal-card h3{margin:20px 0 5px;font-size:15px}.legal-card p{margin:0;color:var(--muted);font-size:14px}
     @keyframes platform-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
     @media(prefers-reduced-motion:reduce){.showcase-img{animation:none}.product-card{transition:none}}
-    .faq{max-width:850px}.faq-category{margin:30px 0 6px;font-size:14px;color:var(--blue);letter-spacing:.04em}.faq-category:first-child{margin-top:0}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between;gap:18px}.faq-a{color:var(--muted);margin-top:8px}.faq-more{display:none}.faq-more.is-open{display:block}.faq-toggle{margin:26px auto 0;display:flex;background:var(--navy);color:#fff;border:0}.faq-toggle[aria-expanded="true"]{background:var(--blue)}
+    .faq-categories{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}.faq-category-tab{padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}.faq-category-tab:hover,.faq-category-tab[aria-selected="true"]{background:var(--blue);border-color:var(--blue);color:#fff}.faq{max-width:850px}.faq-category{margin:30px 0 6px;font-size:14px;color:var(--blue);letter-spacing:.04em}.faq-category:first-child{margin-top:0}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between;gap:18px}.faq-a{color:var(--muted);margin-top:8px}.faq-more{display:block}.faq-toggle{display:none}.js .faq-category{display:none}.js .faq-category.is-active{display:block}.js .faq-item{display:none}.js .faq-item.is-active{display:block}.js .faq-more{display:none}.js .faq-more.category-mode{display:block}
+    @media(max-width:560px){.faq-categories{gap:8px}.faq-category-tab{font-size:12px;padding:9px 11px}}
     .cta{padding:70px;border-radius:34px;background:linear-gradient(135deg,#0b1730,#155eef);color:#fff;text-align:center}.cta p{color:#d4e3ff;max-width:650px;margin:12px auto 25px}
     footer{background:#06101f;color:#aebbd0;padding:60px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:900;margin-bottom:12px}.footer-links{display:grid;gap:8px;font-size:14px}.copyright{border-top:1px solid #1b2b43;margin-top:35px;padding-top:22px;font-size:13px}
     @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets,.legal-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero-card{min-height:400px}.photo.large{min-height:380px}}
@@ -146,6 +148,7 @@ United States, New York, NY 10005, USA.</p></div>
 </div></section>
 
 <section id="faq"><div class="container"><div class="section-head"><span class="eyebrow">FAQ</span><h2>Frequently asked questions.</h2><p>Answers for Shopora customers, sellers and marketplace partners.</p></div>
+<div class="faq-categories" role="tablist" aria-label="FAQ categories"></div>
 <div class="faq">
   <h3 class="faq-category">1. Account &amp; Registration</h3>
   <div class="faq-item"><div class="faq-q">Q1. How do I create a Shopora account? <span>+</span></div><div class="faq-a">Click Sign Up, enter the required information, create your password, and complete the verification process. Once your registration is completed and approved, you can access your Shopora account.</div></div>
@@ -247,14 +250,42 @@ United States, New York, NY 10005, USA.</p></div>
   <div class="copyright">© 2026 Shopora. Global commerce platform.</div>
 </div></footer>
 <script>
-  const faqToggle = document.querySelector('.faq-toggle');
+  const faq = document.querySelector('#faq');
   const faqMore = document.querySelector('#faq-more');
-  faqToggle.addEventListener('click', () => {
-    const expanded = faqToggle.getAttribute('aria-expanded') === 'true';
-    faqToggle.setAttribute('aria-expanded', String(!expanded));
-    faqMore.classList.toggle('is-open', !expanded);
-    faqToggle.textContent = expanded ? 'See more FAQs' : 'Show fewer FAQs';
+  const faqCategories = [...faq.querySelectorAll('.faq-category')];
+  const faqItems = [...faq.querySelectorAll('.faq-item')];
+  const faqTabs = document.querySelector('.faq-categories');
+  let activeCategory = 0;
+
+  let categoryIndex = -1;
+  [...faq.querySelector('.faq').children, ...faqMore.children].forEach(element => {
+    if (element.classList.contains('faq-category')) categoryIndex += 1;
+    if (element.classList.contains('faq-category') || element.classList.contains('faq-item')) {
+      element.dataset.category = categoryIndex;
+    }
   });
+
+  faqCategories.forEach((category, index) => {
+    const tab = document.createElement('button');
+    tab.className = 'faq-category-tab';
+    tab.type = 'button';
+    tab.role = 'tab';
+    tab.textContent = category.textContent.replace(/^\d+\.\s*/, '');
+    tab.addEventListener('click', () => selectCategory(index));
+    faqTabs.appendChild(tab);
+  });
+
+  function selectCategory(index) {
+    activeCategory = index;
+    faqMore.classList.add('category-mode');
+    faqCategories.forEach((category, categoryNumber) => category.classList.toggle('is-active', categoryNumber === activeCategory));
+    faqItems.forEach(item => item.classList.toggle('is-active', Number(item.dataset.category) === activeCategory));
+    [...faqTabs.children].forEach((tab, categoryNumber) => {
+      tab.setAttribute('aria-selected', String(categoryNumber === activeCategory));
+    });
+  }
+
+  selectCategory(0);
 </script>
 </body>
 </html>
