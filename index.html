@@ -29,8 +29,16 @@
     h1{font-size:clamp(48px,7vw,82px);line-height:.98;letter-spacing:-4px;margin:20px 0}
     h1 em{font-style:normal;color:var(--blue)} .lead{font-size:20px;color:#59687b;max-width:650px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .hero-card{border-radius:32px;aspect-ratio:1496 / 743;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    .hero-image{display:block;width:100%;height:100%;object-fit:contain}
+    .hero-card{border:1px solid #dbe4ef;aspect-ratio:1496 / 743;box-shadow:0 24px 55px rgba(7,20,38,.18);position:relative;overflow:hidden;background:#fff}
+    .hero-image{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}
+    .js section:not(.hero) .container > *{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+    .js section.reveal:not(.hero) .container > *{opacity:1;transform:none}
+    .js section.reveal:not(.hero) .container > *:nth-child(2){transition-delay:.12s}
+    .js section.reveal:not(.hero) .container > *:nth-child(3){transition-delay:.24s}
+    .hero-copy{animation:hero-enter .8s cubic-bezier(.22,1,.36,1) both}
+    .hero-card{animation:hero-enter .9s .12s cubic-bezier(.22,1,.36,1) both}
+    @keyframes hero-enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-copy,.hero-card{animation:none}.js section:not(.hero) .container > *{opacity:1;transform:none;transition:none}}
     section{padding:95px 0}.section-head{max-width:720px;margin-bottom:42px}.section-head h2{font-size:46px;line-height:1.05;letter-spacing:-2px;margin:10px 0}.section-head p{color:var(--muted);font-size:18px}
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat{padding:28px;border:1px solid var(--line);border-radius:20px;background:#fff}.stat strong{display:block;font-size:36px}.stat span{color:var(--muted)}
     .dark-section{background:var(--navy);color:#fff}.dark-section .section-head p{color:#aebbd0}
@@ -46,11 +54,12 @@
     .faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between}.faq-a{color:var(--muted);margin-top:8px}
     .cta{padding:70px;border-radius:34px;background:linear-gradient(135deg,#0b1730,#155eef);color:#fff;text-align:center}.cta p{color:#d4e3ff;max-width:650px;margin:12px auto 25px}
     footer{background:#06101f;color:#aebbd0;padding:60px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:900;margin-bottom:12px}.footer-links{display:grid;gap:8px;font-size:14px}.copyright{border-top:1px solid #1b2b43;margin-top:35px;padding-top:22px;font-size:13px}
-    @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero-card{min-height:400px}.photo.large{min-height:380px}}
+    @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.photo.large{min-height:380px}}
     @media(max-width:560px){section{padding:70px 0}.stats,.cards,.markets{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:125px}.cta{padding:40px 24px}}
   </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 <header><div class="container"><nav>
   <a class="brand" href="#home" aria-label="Shopora home">
     <img class="brand-logo" src="cbb8748b-e259-4431-9089-83607e905fcc.png" alt="Shopora — Shop for smiles, support" />
@@ -63,7 +72,7 @@
 
 <main>
 <section class="hero" id="home"><div class="container hero-grid">
-  <div>
+  <div class="hero-copy">
     <span class="eyebrow">U.S.-ORIGINATED • GLOBAL COMMERCE</span>
     <h1>Commerce without <em>borders.</em></h1>
     <p class="lead">Shopora is a global e-commerce company designed to connect customers, retailers and brands through a modern digital shopping experience across international markets.</p>
@@ -156,5 +165,17 @@ United States, New York, NY 10005, USA.</p></div>
   </div>
   <div class="copyright">© 2026 Shopora. Global commerce platform.</div>
 </div></footer>
+<script>
+  const revealSections = document.querySelectorAll('section:not(.hero)');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealSections.forEach(section => revealObserver.observe(section));
+</script>
 </body>
 </html>
