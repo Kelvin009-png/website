@@ -42,14 +42,17 @@
     .dark-section .icon{background:#17304f;color:#67e8f9}.card h3{margin:0 0 8px;font-size:20px}.card p{margin:0;color:var(--muted)}.dark-section .card p{color:#b2bfd1}
     .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}.photo{min-height:460px;padding:25px;display:flex;align-items:end;color:#fff;font-weight:900;position:relative;overflow:hidden;background:#0f172a}
     .photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}.photo-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo > div{position:relative;z-index:1}.photo small{display:block;font-weight:600;opacity:.8}.photo b{font-size:25px}
-    .markets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.market{border-radius:24px;padding:28px;background:var(--bg);border:1px solid var(--line)}.market .flag{font-size:34px}.market h3{font-size:23px}
+    .markets{display:grid;grid-template-columns:1.35fr .9fr .9fr;grid-template-rows:250px 250px;gap:18px}.market{min-height:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:#071426;color:#fff}.market:first-child{grid-row:span 2}.market-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1),filter .8s ease}.market:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(7,20,38,.88));pointer-events:none}.market-copy{position:absolute;z-index:1;left:24px;right:24px;bottom:22px}.market .flag{font-size:25px}.market h3{font-size:23px;margin:4px 0}.market p{margin:0;color:#d7e1ef}.market:hover .market-image{transform:scale(1.06);filter:saturate(1.12)}
+    .global-gallery .market{animation:gallery-enter .9s cubic-bezier(.22,1,.36,1) both}.global-gallery .market:nth-child(2){animation-delay:.1s}.global-gallery .market:nth-child(3){animation-delay:.2s}.global-gallery .market:nth-child(4){animation-delay:.3s}
+    @keyframes gallery-enter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.global-gallery .market{animation:none}.market-image{transition:none}}
     .showcase{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.showcase-img{background:linear-gradient(135deg,#0b1730,#1d4ed8);padding:18px;border-radius:30px;box-shadow:var(--shadow)}.browser{background:#fff;border-radius:18px;overflow:hidden}.browser-bar{height:35px;background:#edf1f6;padding:8px 12px;font-size:10px;color:#738094}.browser-body{padding:18px}.browser-hero{height:160px;border-radius:14px;background:linear-gradient(110deg,#dbeafe,#cffafe);margin-bottom:15px}.browser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.browser-row div{height:95px;border-radius:12px;background:#f1f5f9}
     .timeline{border-left:2px solid #dbe3ee;margin-left:15px;padding-left:30px}.timeline-item{margin-bottom:35px;position:relative}.timeline-item:before{content:"";position:absolute;left:-40px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px #eaf1ff}
     .faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between}.faq-a{color:var(--muted);margin-top:8px}
     .cta{padding:70px;border-radius:34px;background:linear-gradient(135deg,#0b1730,#155eef);color:#fff;text-align:center}.cta p{color:#d4e3ff;max-width:650px;margin:12px auto 25px}
     footer{background:#06101f;color:#aebbd0;padding:60px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:900;margin-bottom:12px}.footer-links{display:grid;gap:8px;font-size:14px}.copyright{border-top:1px solid #1b2b43;margin-top:35px;padding-top:22px;font-size:13px}
     @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero-card{min-height:400px}.photo.large{min-height:380px}}
-    @media(max-width:560px){section{padding:70px 0}.stats,.cards,.markets{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:125px}.cta{padding:40px 24px}}
+    @media(max-width:560px){section{padding:70px 0}.stats,.cards,.markets{grid-template-columns:1fr}.markets{grid-template-rows:repeat(4,260px)}.market:first-child{grid-row:auto}h1{letter-spacing:-2px}.hero{padding-top:125px}.cta{padding:40px 24px}}
   </style>
 </head>
 <body>
@@ -86,10 +89,11 @@
 
 <section class="dark-section" id="global"><div class="container">
   <div class="section-head"><span class="eyebrow">GLOBAL OPERATIONS</span><h2>Designed for international commerce.</h2><p>Shopora serves customers and business partners across North America, Asia and Europe with a modern retail experience.</p></div>
-  <div class="markets">
-    <div class="market"><div class="flag">🇺🇸</div><h3>North America</h3><p>Corporate origin, technology, business development and international operations.</p></div>
-    <div class="market"><div class="flag">🌏</div><h3>Asia</h3><p>Growth-focused strategy across leading digital commerce markets and emerging online audiences.</p></div>
-    <div class="market"><div class="flag">🇪🇺</div><h3>Europe</h3><p>Cross-border shopping support and trusted retail partnerships across key regions.</p></div>
+  <div class="markets global-gallery">
+    <div class="market"><img class="market-image" src="download.jpg" alt="Aerial view of a global business district at dusk" /><div class="market-copy"><div class="flag">🇺🇸</div><h3>North America</h3><p>Corporate origin, technology, business development and international operations.</p></div></div>
+    <div class="market"><img class="market-image" src="download (1).jpg" alt="Modern international office lobby" /><div class="market-copy"><div class="flag">🌏</div><h3>Asia</h3><p>Growth-focused strategy across leading digital commerce markets and emerging online audiences.</p></div></div>
+    <div class="market"><img class="market-image" src="download (2).jpg" alt="Contemporary global office exterior" /><div class="market-copy"><div class="flag">🇪🇺</div><h3>Europe</h3><p>Cross-border shopping support and trusted retail partnerships across key regions.</p></div></div>
+    <div class="market"><img class="market-image" src="london-stock-image-shoot-lhr16-7-1.jpg" alt="Open-plan international office atrium" /><div class="market-copy"><div class="flag">🌐</div><h3>Global Network</h3><p>Connected teams and welcoming spaces built for international collaboration.</p></div></div>
   </div>
 </div></section>
 
