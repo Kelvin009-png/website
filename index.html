@@ -29,37 +29,30 @@
     h1{font-size:clamp(48px,7vw,82px);line-height:.98;letter-spacing:-4px;margin:20px 0}
     h1 em{font-style:normal;color:var(--blue)} .lead{font-size:20px;color:#59687b;max-width:650px}
     .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-    .hero-card{border:1px solid #dbe4ef;aspect-ratio:1496 / 743;box-shadow:0 24px 55px rgba(7,20,38,.18);position:relative;overflow:hidden;background:#fff}
-    .hero-image{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}
-    .js section:not(.hero) .container > *{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
-    .js section.reveal:not(.hero) .container > *{opacity:1;transform:none}
-    .js section.reveal:not(.hero) .container > *:nth-child(2){transition-delay:.12s}
-    .js section.reveal:not(.hero) .container > *:nth-child(3){transition-delay:.24s}
-    .hero-copy{animation:hero-enter .8s cubic-bezier(.22,1,.36,1) both}
-    .hero-card{animation:hero-enter .9s .12s cubic-bezier(.22,1,.36,1) both}
-    @keyframes hero-enter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-copy,.hero-card{animation:none}.js section:not(.hero) .container > *{opacity:1;transform:none;transition:none}}
+    .hero-card{background:var(--navy);border-radius:32px;min-height:470px;padding:24px;color:white;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero-card:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));right:-120px;top:-110px;opacity:.9}
+    .screen{position:absolute;left:28px;right:28px;bottom:28px;top:105px;background:#fff;border-radius:20px;padding:18px;color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .screen-top{display:flex;justify-content:space-between;font-weight:900}.mock-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+    .mock-product{height:145px;border-radius:16px;background:linear-gradient(145deg,#edf3ff,#dce9ff);padding:12px;display:flex;align-items:end;font-weight:800;font-size:13px}
     section{padding:95px 0}.section-head{max-width:720px;margin-bottom:42px}.section-head h2{font-size:46px;line-height:1.05;letter-spacing:-2px;margin:10px 0}.section-head p{color:var(--muted);font-size:18px}
     .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat{padding:28px;border:1px solid var(--line);border-radius:20px;background:#fff}.stat strong{display:block;font-size:36px}.stat span{color:var(--muted)}
     .dark-section{background:var(--navy);color:#fff}.dark-section .section-head p{color:#aebbd0}
     .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:0 10px 35px rgba(7,20,38,.04)}.dark-section .card{background:#0d1d33;border-color:#1d304c}
     .icon{width:48px;height:48px;border-radius:14px;background:#eaf1ff;color:var(--blue);display:grid;place-items:center;font-weight:900;margin-bottom:18px}
     .dark-section .icon{background:#17304f;color:#67e8f9}.card h3{margin:0 0 8px;font-size:20px}.card p{margin:0;color:var(--muted)}.dark-section .card p{color:#b2bfd1}
-    .gallery{display:grid;grid-template-columns:1.3fr .7fr;gap:18px}.photo{min-height:280px;border-radius:24px;padding:25px;display:flex;align-items:end;color:#fff;font-weight:900;position:relative;overflow:hidden;background:linear-gradient(135deg,#0f172a,#2563eb)}
-    .photo:nth-child(2){background:linear-gradient(135deg,#083344,#06b6d4)}.photo:nth-child(3){background:linear-gradient(135deg,#312e81,#7c3aed)}.photo.large{grid-row:span 2;min-height:578px}
-    .photo small{display:block;font-weight:600;opacity:.8}.photo b{font-size:25px}
+    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}.photo{min-height:460px;padding:25px;display:flex;align-items:end;color:#fff;font-weight:900;position:relative;overflow:hidden;background:#0f172a}
+    .photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}.photo-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.photo > div{position:relative;z-index:1}.photo small{display:block;font-weight:600;opacity:.8}.photo b{font-size:25px}
     .markets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.market{border-radius:24px;padding:28px;background:var(--bg);border:1px solid var(--line)}.market .flag{font-size:34px}.market h3{font-size:23px}
     .showcase{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}.showcase-img{background:linear-gradient(135deg,#0b1730,#1d4ed8);padding:18px;border-radius:30px;box-shadow:var(--shadow)}.browser{background:#fff;border-radius:18px;overflow:hidden}.browser-bar{height:35px;background:#edf1f6;padding:8px 12px;font-size:10px;color:#738094}.browser-body{padding:18px}.browser-hero{height:160px;border-radius:14px;background:linear-gradient(110deg,#dbeafe,#cffafe);margin-bottom:15px}.browser-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.browser-row div{height:95px;border-radius:12px;background:#f1f5f9}
     .timeline{border-left:2px solid #dbe3ee;margin-left:15px;padding-left:30px}.timeline-item{margin-bottom:35px;position:relative}.timeline-item:before{content:"";position:absolute;left:-40px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px #eaf1ff}
     .faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line);padding:20px 0}.faq-q{font-weight:850;display:flex;justify-content:space-between}.faq-a{color:var(--muted);margin-top:8px}
     .cta{padding:70px;border-radius:34px;background:linear-gradient(135deg,#0b1730,#155eef);color:#fff;text-align:center}.cta p{color:#d4e3ff;max-width:650px;margin:12px auto 25px}
     footer{background:#06101f;color:#aebbd0;padding:60px 0}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}.footer-title{color:#fff;font-weight:900;margin-bottom:12px}.footer-links{display:grid;gap:8px;font-size:14px}.copyright{border-top:1px solid #1b2b43;margin-top:35px;padding-top:22px;font-size:13px}
-    @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.photo.large{min-height:380px}}
+    @media(max-width:850px){.navlinks{display:none}.hero-grid,.showcase,.gallery{grid-template-columns:1fr}.stats,.cards,.markets{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.hero-card{min-height:400px}.photo.large{min-height:380px}}
     @media(max-width:560px){section{padding:70px 0}.stats,.cards,.markets{grid-template-columns:1fr}h1{letter-spacing:-2px}.hero{padding-top:125px}.cta{padding:40px 24px}}
   </style>
 </head>
 <body>
-<script>document.documentElement.classList.add('js');</script>
 <header><div class="container"><nav>
   <a class="brand" href="#home" aria-label="Shopora home">
     <img class="brand-logo" src="cbb8748b-e259-4431-9089-83607e905fcc.png" alt="Shopora — Shop for smiles, support" />
@@ -72,13 +65,18 @@
 
 <main>
 <section class="hero" id="home"><div class="container hero-grid">
-  <div class="hero-copy">
+  <div>
     <span class="eyebrow">U.S.-ORIGINATED • GLOBAL COMMERCE</span>
     <h1>Commerce without <em>borders.</em></h1>
     <p class="lead">Shopora is a global e-commerce company designed to connect customers, retailers and brands through a modern digital shopping experience across international markets.</p>
     <div class="actions"><a class="btn primary" href="#about">Discover Shopora</a><a class="btn" href="#platform">View Platform</a></div>
   </div>
-  <div class="hero-card"><img class="hero-image" src="image.png" alt="Shopora shopping categories" /></div>
+  <div class="hero-card"><div style="position:relative;z-index:2;font-size:13px;font-weight:800;opacity:.8">SHOPORA GLOBAL COMMERCE</div>
+    <div class="screen"><div class="screen-top"><span>Shopora</span><span>Search • Account • Cart</span></div><div class="mock-grid">
+      <div class="mock-product">Electronics</div><div class="mock-product">Fashion</div><div class="mock-product">Home</div>
+      <div class="mock-product">Beauty</div><div class="mock-product">Sports</div><div class="mock-product">Everyday</div>
+    </div></div>
+  </div>
 </div></section>
 
 <section id="about"><div class="container">
@@ -98,9 +96,8 @@
 <section id="headquarters"><div class="container">
   <div class="section-head"><span class="eyebrow">HEADQUARTERS</span><h2>Where Shopora operates from.</h2><p>Strong infrastructure, team culture and global operations create the foundation for modern commerce.</p></div>
   <div class="gallery">
-    <div class="photo large"><div><small>GLOBAL OFFICE</small><b>Shopora Headquarters</b><br>New York, United States</div></div>
-    <div class="photo"><div><small>EXECUTIVE SPACE</small><b>Leadership Office</b></div></div>
-    <div class="photo"><div><small>TEAM HUB</small><b>Operations & Team</b></div></div>
+    <div class="photo"><img class="photo-image" src="12273c0c-f4df-4dac-83db-1fb5b2011056.png" alt="Shopora headquarters exterior in daylight" /><div><small>GLOBAL OFFICE</small><b>Shopora Headquarters</b><br>New York, United States</div></div>
+    <div class="photo"><img class="photo-image" src="f5d27bc8-06f6-413a-a020-a2eb4c5ee1c5.png" alt="Shopora headquarters exterior at dusk" /><div><small>GLOBAL OFFICE</small><b>Shopora Headquarters</b><br>New York, United States</div></div>
   </div>
 </div></section>
 
@@ -165,17 +162,5 @@ United States, New York, NY 10005, USA.</p></div>
   </div>
   <div class="copyright">© 2026 Shopora. Global commerce platform.</div>
 </div></footer>
-<script>
-  const revealSections = document.querySelectorAll('section:not(.hero)');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('reveal');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealSections.forEach(section => revealObserver.observe(section));
-</script>
 </body>
 </html>
